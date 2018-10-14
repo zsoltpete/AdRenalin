@@ -15,10 +15,11 @@ class DetectionViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     
     var planes = [OverlayPlane]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,ARSCNDebugOptions.showWorldOrigin]
+        //self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,ARSCNDebugOptions.showWorldOrigin]
         
         
         // Set the view's delegate
@@ -57,8 +58,44 @@ class DetectionViewController: UIViewController {
     
     private func registerGestureRecognizers() {
         
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func tapped(recognizer :UIGestureRecognizer) {
+        
+        let sceneView = recognizer.view as! ARSCNView
+        let touchLocation = recognizer.location(in: sceneView)
+        
+        let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+        
+        if !hitTestResult.isEmpty {
+            
+            guard let hitResult = hitTestResult.first else {
+                return
+            }
+            self.addPatient(hitResult :hitResult)
+            self.removeAllPlanes()
+        }
+    }
+    
+    private func addPatient(hitResult :ARHitTestResult) {
+        
+        let modelScene = SCNScene(named: "dead_man.scn")!
+        
+        let modelNode = modelScene.rootNode
+        
+        modelNode.position = SCNVector3(hitResult.worldTransform.columns.3.x,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+        
+        self.sceneView.scene.rootNode.addChildNode(modelNode)
+        
+    }
+    
+    private func removeAllPlanes(){
+        self.planes.forEach { (plane) in
+            plane.removeFromParentNode()
+        }
+        self.sceneView.delegate = nil
     }
 
 }
