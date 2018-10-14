@@ -11,11 +11,11 @@ import SceneKit
 import ARKit
 
 class DetectionViewController: UIViewController {
-
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     var planes = [OverlayPlane]()
-    
+    var patientAdded = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +34,7 @@ class DetectionViewController: UIViewController {
         sceneView.scene = scene
         
         registerGestureRecognizers()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,15 +67,31 @@ class DetectionViewController: UIViewController {
         let sceneView = recognizer.view as! ARSCNView
         let touchLocation = recognizer.location(in: sceneView)
         
-        let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-        
-        if !hitTestResult.isEmpty {
+        if !patientAdded {
+            let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
             
-            guard let hitResult = hitTestResult.first else {
-                return
+            if !hitTestResult.isEmpty {
+                
+                guard let hitResult = hitTestResult.first else {
+                    return
+                }
+                self.addPatient(hitResult :hitResult)
+                self.removeAllPlanes()
             }
-            self.addPatient(hitResult :hitResult)
-            self.removeAllPlanes()
+        } else {
+            let location = recognizer.location(in: sceneView)
+            self.removeNode(location: location)
+        }
+    }
+    
+    private func removeNode(location: CGPoint) {
+        
+        let hitResults = sceneView.hitTest(location, options: nil)
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let node = result.node
+            node.removeFromParentNode()
+            print("Patient removed")
         }
     }
     
@@ -86,9 +102,9 @@ class DetectionViewController: UIViewController {
         let modelNode = modelScene.rootNode
         
         modelNode.position = SCNVector3(hitResult.worldTransform.columns.3.x,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
-        
+        modelNode.name = "dead_man"
         self.sceneView.scene.rootNode.addChildNode(modelNode)
-        
+        self.patientAdded = true
     }
     
     private func removeAllPlanes(){
@@ -97,7 +113,7 @@ class DetectionViewController: UIViewController {
         }
         self.sceneView.delegate = nil
     }
-
+    
 }
 
 extension DetectionViewController: ARSCNViewDelegate {
