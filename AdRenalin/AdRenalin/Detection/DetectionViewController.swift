@@ -97,7 +97,7 @@ class DetectionViewController: UIViewController {
     
     private func addPatient(hitResult :ARHitTestResult) {
         
-        let modelScene = SCNScene(named: "dead_man.scn")!
+        let modelScene = SCNScene(named: "cama.scn")!
         
         let modelNode = modelScene.rootNode
         

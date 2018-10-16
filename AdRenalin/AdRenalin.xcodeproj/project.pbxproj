@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1021210D01D85E1760C1AE08 /* Pods_AdRenalin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */; };
+		5402F4BC21764A180001567D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4BB21764A180001567D /* GoogleService-Info.plist */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -16,9 +18,11 @@
 		54455D96217341D5002C08EA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D95217341D5002C08EA /* Enums.swift */; };
 		54455D982173422B002C08EA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D972173422B002C08EA /* art.scnassets */; };
 		54455D9D217345FC002C08EA /* dead_man.scn in Resources */ = {isa = PBXBuildFile; fileRef = 54455D9C21734496002C08EA /* dead_man.scn */; };
+		54455DAD21751349002C08EA /* cama.scn in Resources */ = {isa = PBXBuildFile; fileRef = 54455DA821750F98002C08EA /* cama.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5402F4BB21764A180001567D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,6 +34,10 @@
 		54455D95217341D5002C08EA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		54455D972173422B002C08EA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		54455D9C21734496002C08EA /* dead_man.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = dead_man.scn; sourceTree = "<group>"; };
+		54455DA821750F98002C08EA /* cama.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cama.scn; sourceTree = "<group>"; };
+		798323AE084174E8B6769081 /* Pods-AdRenalin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdRenalin.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin.release.xcconfig"; sourceTree = "<group>"; };
+		C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdRenalin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAE3628F51EFB88A6B94641D /* Pods-AdRenalin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdRenalin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1021210D01D85E1760C1AE08 /* Pods_AdRenalin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3996198A19AD81A9DD2B3264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		54455D7021733F69002C08EA = {
 			isa = PBXGroup;
 			children = (
 				54455D7B21733F69002C08EA /* AdRenalin */,
 				54455D7A21733F69002C08EA /* Products */,
+				95168A12436743DA5FE2183B /* Pods */,
+				3996198A19AD81A9DD2B3264 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +90,7 @@
 				54455D8321733F6A002C08EA /* Assets.xcassets */,
 				54455D8521733F6A002C08EA /* LaunchScreen.storyboard */,
 				54455D8821733F6A002C08EA /* Info.plist */,
+				5402F4BB21764A180001567D /* GoogleService-Info.plist */,
 				54455D972173422B002C08EA /* art.scnassets */,
 			);
 			path = AdRenalin;
@@ -104,8 +124,18 @@
 			isa = PBXGroup;
 			children = (
 				54455D9C21734496002C08EA /* dead_man.scn */,
+				54455DA821750F98002C08EA /* cama.scn */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		95168A12436743DA5FE2183B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAE3628F51EFB88A6B94641D /* Pods-AdRenalin.debug.xcconfig */,
+				798323AE084174E8B6769081 /* Pods-AdRenalin.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54455D8B21733F6A002C08EA /* Build configuration list for PBXNativeTarget "AdRenalin" */;
 			buildPhases = (
+				83089E2466222D9B848F098B /* [CP] Check Pods Manifest.lock */,
 				54455D7521733F69002C08EA /* Sources */,
 				54455D7621733F69002C08EA /* Frameworks */,
 				54455D7721733F69002C08EA /* Resources */,
+				F5E34F2385A60F589FA68035 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,13 +200,64 @@
 			files = (
 				54455D8721733F6A002C08EA /* LaunchScreen.storyboard in Resources */,
 				54455D9D217345FC002C08EA /* dead_man.scn in Resources */,
+				54455DAD21751349002C08EA /* cama.scn in Resources */,
 				54455D982173422B002C08EA /* art.scnassets in Resources */,
 				54455D8421733F6A002C08EA /* Assets.xcassets in Resources */,
 				54455D8221733F69002C08EA /* Main.storyboard in Resources */,
+				5402F4BC21764A180001567D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83089E2466222D9B848F098B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AdRenalin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5E34F2385A60F589FA68035 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54455D7521733F69002C08EA /* Sources */ = {
@@ -328,6 +411,7 @@
 		};
 		54455D8C21733F6A002C08EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE3628F51EFB88A6B94641D /* Pods-AdRenalin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -346,6 +430,7 @@
 		};
 		54455D8D21733F6A002C08EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 798323AE084174E8B6769081 /* Pods-AdRenalin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
