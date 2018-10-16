@@ -97,13 +97,23 @@ class DetectionViewController: UIViewController {
     
     private func addPatient(hitResult :ARHitTestResult) {
         
-        let modelScene = SCNScene(named: "cama.scn")!
+        let numberOfCama: Float = 3
         
-        let modelNode = modelScene.rootNode
+        for i  in 0..<3 {
+            let modelScene = SCNScene(named: "cama.scn")!
+            
+            let modelNode = modelScene.rootNode
+            let width: Float = modelNode.boundingBox.max.x - modelNode.boundingBox.min.x
+            let offset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width
+            modelNode.position = SCNVector3(hitResult.worldTransform.columns.3.x + offset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+            modelNode.name = "dead_man"
+            
+            modelNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
+            self.sceneView.scene.rootNode.addChildNode(modelNode)
+            
+        }
         
-        modelNode.position = SCNVector3(hitResult.worldTransform.columns.3.x,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
-        modelNode.name = "dead_man"
-        self.sceneView.scene.rootNode.addChildNode(modelNode)
+        
         self.patientAdded = true
     }
     
