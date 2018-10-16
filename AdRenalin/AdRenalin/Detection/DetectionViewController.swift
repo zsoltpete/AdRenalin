@@ -100,16 +100,26 @@ class DetectionViewController: UIViewController {
         let numberOfCama: Float = 3
         
         for i  in 0..<3 {
-            let modelScene = SCNScene(named: "cama.scn")!
+            let camaScene = SCNScene(named: "cama.scn")!
             
-            let modelNode = modelScene.rootNode
-            let width: Float = modelNode.boundingBox.max.x - modelNode.boundingBox.min.x
-            let offset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width
-            modelNode.position = SCNVector3(hitResult.worldTransform.columns.3.x + offset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
-            modelNode.name = "dead_man"
+            let camaNode = camaScene.rootNode
+            let width: Float = camaNode.boundingBox.max.x - camaNode.boundingBox.min.x
+            let depth: Float = camaNode.boundingBox.max.z - camaNode.boundingBox.min.z
+            let xOffset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width
+            camaNode.position = SCNVector3(hitResult.worldTransform.columns.3.x + xOffset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+            camaNode.name = "cama\(i)"
             
-            modelNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
-            self.sceneView.scene.rootNode.addChildNode(modelNode)
+            camaNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
+            self.sceneView.scene.rootNode.addChildNode(camaNode)
+            
+            let deadManScene = SCNScene(named: "dead_man.scn")!
+            
+            let deadManNode = deadManScene.rootNode
+            deadManNode.position = SCNVector3(camaNode.position.x, camaNode.position.y, camaNode.position.z  + depth / 10.0)
+            deadManNode.name = "dead_man\(i)"
+            
+            deadManNode.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1)
+            self.sceneView.scene.rootNode.addChildNode(deadManNode)
             
         }
         
