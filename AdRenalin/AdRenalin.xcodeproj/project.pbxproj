@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1021210D01D85E1760C1AE08 /* Pods_AdRenalin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */; };
 		5402F4BC21764A180001567D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4BB21764A180001567D /* GoogleService-Info.plist */; };
+		5402F4BF217661CF0001567D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4BE217661CF0001567D /* Constants.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		5402F4BB21764A180001567D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5402F4BE217661CF0001567D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,13 @@
 				C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5402F4BD217661BC0001567D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		54455D7021733F69002C08EA = {
@@ -115,7 +124,9 @@
 		54455D94217341C0002C08EA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5402F4BD217661BC0001567D /* Extensions */,
 				54455D95217341D5002C08EA /* Enums.swift */,
+				5402F4BE217661CF0001567D /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -264,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,
 				54455D9321734190002C08EA /* OverlayPlane.swift in Sources */,
 				54455D96217341D5002C08EA /* Enums.swift in Sources */,

@@ -80,7 +80,20 @@ class DetectionViewController: UIViewController {
             }
         } else {
             let location = recognizer.location(in: sceneView)
-            self.removeNode(location: location)
+            self.nodeIfPushed(location: location)
+        }
+    }
+    
+    private func nodeIfPushed(location: CGPoint) {
+        
+        let hitResults = sceneView.hitTest(location, options: nil)
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let node = result.node
+            if node.name!.contains("patien") {
+                node.addShowMeAnimation()
+            }
+            print("Patient tapped")
         }
     }
     
@@ -119,6 +132,7 @@ class DetectionViewController: UIViewController {
             deadManNode.name = "dead_man\(i)"
             
             deadManNode.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1)
+            
             self.sceneView.scene.rootNode.addChildNode(deadManNode)
             
         }
@@ -161,5 +175,16 @@ extension DetectionViewController: ARSCNViewDelegate {
         }
         
         plane?.update(anchor: anchor as! ARPlaneAnchor)
+    }
+}
+
+
+extension SCNNode {
+    func addShowMeAnimation() {
+        let rotateOne = SCNAction.rotateBy(x: CGFloat(Float.pi / 2.0), y: 0.0, z: 0, duration: 1.0)
+        let hoverUp = SCNAction.moveBy(x: 0, y: 2.0, z: 0, duration: 1.0)
+        let scaleUp  = SCNAction.scale(by: 2.0, duration: 1.0)
+        let rotateAndHover = SCNAction.group([rotateOne, hoverUp, scaleUp])
+        self.runAction(rotateAndHover)
     }
 }
