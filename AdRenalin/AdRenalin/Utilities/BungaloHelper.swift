@@ -17,8 +17,8 @@ class BungaloHelper {
         case 1:
             positions.append(self.getFirstBungaloPosition())
         case 2:
-            positions.append(self.getFirstBungaloPosition())
             positions.append(self.getSecondBungaloPosition())
+            positions.append(self.getThirdBungaloPosition())
         case 3:
             positions.append(self.getFirstBungaloPosition())
             positions.append(self.getSecondBungaloPosition())
@@ -35,12 +35,12 @@ class BungaloHelper {
     }
     
     private func getSecondBungaloPosition() -> SCNVector3 {
-        let position = SCNVector3(0.2, -0.2, -0.4)
+        let position = SCNVector3(0.1, -0.2, -0.4)
         return position
     }
     
     private func getThirdBungaloPosition() -> SCNVector3 {
-        let position = SCNVector3(-0.2, -0.2, -0.4)
+        let position = SCNVector3(-0.1, -0.2, -0.4)
         return position
     }
     

@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import SceneKit
 
 class Room: BaseResponse {
-    let patients: [Patient]
+    var patients: [Patient]
     let name: String
+    
+   //Locally
+    var node: SCNNode?
     
     init(referenceId: String, name: String, patients: [Patient]){
         self.name = name
@@ -20,14 +24,18 @@ class Room: BaseResponse {
     }
     
     override init(snapshot: [String: AnyObject], for referenceId: String) {
-        name = snapshot["name"] as! String
-        patients = snapshot["patients"] as! [Patient]
+        name = snapshot["id"] as! String
+        let patientShanpshot = snapshot["patients"] as! [AnyObject]
+        self.patients = [Patient]()
+        for patient in patientShanpshot {
+            self.patients.append(Patient(snapshot: patient as! [String: AnyObject] , for: referenceId))
+        }
         super.init(referenceId: referenceId)
     }
     
     func toAnyObject() -> Any {
         return [
-            "name": name,
+            "id": name,
             "patients": patients
         ]
     }

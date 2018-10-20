@@ -20,15 +20,17 @@ class DetectionViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     var planes = [OverlayPlane]()
-    var patientAdded = false
+    var flowStatus = FlowStatus.detectPlaneForRooms
     
     var chooseTextNode : SCNNode?
+    var selectedRoom: Room?
+    var selectedRoomIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         MBProgressHUD.showAdded(to: AppDelegate.shared.window!, animated: true)
         DataProvider.shared.getRooms().subscribe(onNext: { [weak self]value in
-            self!.addbungalos(counter: 3)
+            DataStore.shared.rooms = value
             let textPosition = Constants.Positions.DefaultText
             self!.chooseTextNode = self!.addText(text: "Choose room", position: textPosition)
             self!.sceneView.scene.rootNode.addChildNode(self!.chooseTextNode!)
@@ -38,7 +40,7 @@ class DetectionViewController: UIViewController {
         
         
         // Set the view's delegate
-        sceneView.delegate = nil
+        sceneView.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -87,24 +89,10 @@ class DetectionViewController: UIViewController {
         let sceneView = recognizer.view as! ARSCNView
         let touchLocation = recognizer.location(in: sceneView)
         
-        if !patientAdded {
-            let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-            
-            if !hitTestResult.isEmpty {
-                
-                guard let hitResult = hitTestResult.first else {
-                    return
-                }
-                self.addPatient(hitResult :hitResult)
-                self.removeAllPlanes()
-            }
-        } else {
-            let location = recognizer.location(in: sceneView)
-            self.nodeIfPushed(location: location)
-        }
+        self.tapActions(for: self.flowStatus, touchLocation: touchLocation, recognizer: recognizer)
     }
     
-    private func nodeIfPushed(location: CGPoint) {
+    func nodeIfPushed(location: CGPoint) {
         
         let hitResults = sceneView.hitTest(location, options: nil)
         if hitResults.count > 0 {
@@ -117,7 +105,37 @@ class DetectionViewController: UIViewController {
         }
     }
     
-    private func removeNode(location: CGPoint) {
+    func roomIfPushed(location: CGPoint) -> Bool{
+        
+        let hitResults = sceneView.hitTest(location, options: nil)
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let node = result.node
+            if node.name!.contains("cama") {
+                var counter = 0
+                for counter in 0..<DataStore.shared.rooms.count {
+                    let room = DataStore.shared.rooms[counter]
+                    if SCNVector3EqualToVector3(room.node!.position, node.worldPosition) {
+                        selectedRoom = room
+                        selectedRoomIndex = counter
+                        break
+                    }
+                }
+                if selectedRoom != nil {
+                    self.removeAllPlanes()
+                    self.removeAllBungalo()
+                    self.flowStatus = .seePatients
+                    self.sceneView.delegate = self
+                    DataStore.shared.selectedRoom = self.selectedRoom
+                    return true
+                }
+            }
+            print("Patient tapped")
+        }
+        return false
+    }
+    
+    func removeNode(location: CGPoint) {
         
         let hitResults = sceneView.hitTest(location, options: nil)
         if hitResults.count > 0 {
@@ -128,18 +146,18 @@ class DetectionViewController: UIViewController {
         }
     }
     
-    private func addPatient(hitResult :ARHitTestResult) {
+    func addPatient(hitResult: ARHitTestResult, selectedIndex: Int) {
         
-        let numberOfCama: Float = 3
+        let positions = PatientHelper().getPositions(for: DataStore.shared.rooms[selectedIndex].patients.count, hitResult: hitResult)
         
-        for i  in 0..<3 {
+        let numberOfCama: Float = Float(DataStore.shared.rooms[selectedIndex].patients.count)
+        
+        for i  in 0..<Int(numberOfCama) {
             let camaScene = SCNScene(named: "cama.scn")!
             
             let camaNode = camaScene.rootNode
-            let width: Float = camaNode.boundingBox.max.x - camaNode.boundingBox.min.x
             let depth: Float = camaNode.boundingBox.max.z - camaNode.boundingBox.min.z
-            let xOffset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width
-            camaNode.position = SCNVector3(hitResult.worldTransform.columns.3.x + xOffset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+            camaNode.position = positions[i]
             camaNode.name = "cama\(i)"
             
             camaNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
@@ -156,24 +174,21 @@ class DetectionViewController: UIViewController {
             self.sceneView.scene.rootNode.addChildNode(deadManNode)
             
         }
-        
-        
-        self.patientAdded = true
     }
     
-    private func removeAllPlanes(){
+    func removeAllPlanes(){
         self.planes.forEach { (plane) in
             plane.removeFromParentNode()
         }
         self.sceneView.delegate = nil
     }
     
-    func addbungalos(counter: Int){
+    func addbungalos(counter: Int, hitResult :ARHitTestResult){
        
         
         let positions = BungaloHelper().getPositions(for: counter)
         
-        for index in 0...2 {
+        for index in 0..<counter {
             let bungaloScene = SCNScene(named: "cama.scn")!
             let node = bungaloScene.rootNode
             node.scale = SCNVector3(0.5, 0.5, 0.5)
@@ -182,10 +197,16 @@ class DetectionViewController: UIViewController {
             self.sceneView.scene.rootNode.addChildNode(node)
         }
         
-        
+    }
+    
+    func removeAllBungalo(){
+        DataStore.shared.rooms.forEach { (room) in
+            room.node?.removeFromParentNode()
+        }
     }
     
 }
+
 
 extension DetectionViewController: ARSCNViewDelegate {
     
@@ -225,4 +246,12 @@ extension SCNNode {
         let rotateAndHover = SCNAction.group([rotateOne, hoverUp, scaleUp])
         self.runAction(rotateAndHover)
     }
+}
+
+extension SCNVector3 {
+    
+    func convertPrimitive() -> (Float, Float, Float) {
+        return (self.x, self.y, self.z)
+    }
+    
 }

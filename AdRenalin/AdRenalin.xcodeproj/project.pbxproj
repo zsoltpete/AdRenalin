@@ -19,6 +19,10 @@
 		5402F4E1217913470001567D /* BungaloHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4E0217913470001567D /* BungaloHelper.swift */; };
 		5426212F217B35F700D5F1AC /* bungalo.scn in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4DF217912EB0001567D /* bungalo.scn */; };
 		54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */; };
+		54262135217B457000D5F1AC /* DetectionViewController+FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262134217B457000D5F1AC /* DetectionViewController+FlowManager.swift */; };
+		54262137217B461300D5F1AC /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262136217B461300D5F1AC /* DataStore.swift */; };
+		54262139217B4A8600D5F1AC /* SCNNode+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */; };
+		5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5426213A217B681A00D5F1AC /* PatientHelper.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -42,6 +46,10 @@
 		5402F4DF217912EB0001567D /* bungalo.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = bungalo.scn; sourceTree = "<group>"; };
 		5402F4E0217913470001567D /* BungaloHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BungaloHelper.swift; sourceTree = "<group>"; };
 		54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddText.swift"; sourceTree = "<group>"; };
+		54262134217B457000D5F1AC /* DetectionViewController+FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetectionViewController+FlowManager.swift"; sourceTree = "<group>"; };
+		54262136217B461300D5F1AC /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Helpers.swift"; sourceTree = "<group>"; };
+		5426213A217B681A00D5F1AC /* PatientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHelper.swift; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */,
+				54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -154,6 +163,9 @@
 				54455D95217341D5002C08EA /* Enums.swift */,
 				5402F4BE217661CF0001567D /* Constants.swift */,
 				5402F4E0217913470001567D /* BungaloHelper.swift */,
+				54262134217B457000D5F1AC /* DetectionViewController+FlowManager.swift */,
+				54262136217B461300D5F1AC /* DataStore.swift */,
+				5426213A217B681A00D5F1AC /* PatientHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -326,15 +338,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54262135217B457000D5F1AC /* DetectionViewController+FlowManager.swift in Sources */,
 				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,
+				5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */,
 				5402F4C1217663740001567D /* AdNode.swift in Sources */,
 				54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */,
 				5402F4C4217667540001567D /* DataProvider.swift in Sources */,
 				54455D9321734190002C08EA /* OverlayPlane.swift in Sources */,
+				54262137217B461300D5F1AC /* DataStore.swift in Sources */,
 				5402F4E1217913470001567D /* BungaloHelper.swift in Sources */,
 				5402F4D8217909550001567D /* BaseResponse.swift in Sources */,
 				5402F4D6217905B20001567D /* Room.swift in Sources */,
+				54262139217B4A8600D5F1AC /* SCNNode+Helpers.swift in Sources */,
 				5402F4D4217902EC0001567D /* Patient.swift in Sources */,
 				54455D96217341D5002C08EA /* Enums.swift in Sources */,
 				54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */,

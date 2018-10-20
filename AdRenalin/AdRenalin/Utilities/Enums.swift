@@ -13,3 +13,10 @@ enum BodyType : Int {
     case plane = 2
     case car = 3
 }
+
+enum FlowStatus {
+    case detectPlaneForRooms
+    case chooseRoom
+    case detectPlane
+    case seePatients
+}
