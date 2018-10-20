@@ -9,21 +9,36 @@
 import UIKit
 import SceneKit
 import ARKit
+import RxCocoa
+import RxSwift
+import MBProgressHUD
 
 class DetectionViewController: UIViewController {
     
     @IBOutlet weak var sceneView: ARSCNView!
     
+    let disposeBag = DisposeBag()
+    
     var planes = [OverlayPlane]()
     var patientAdded = false
+    
+    var chooseTextNode : SCNNode?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        MBProgressHUD.showAdded(to: AppDelegate.shared.window!, animated: true)
+        DataProvider.shared.getRooms().subscribe(onNext: { [weak self]value in
+            self!.addbungalos(counter: 3)
+            let textPosition = Constants.Positions.DefaultText
+            self!.chooseTextNode = self!.addText(text: "Choose room", position: textPosition)
+            self!.sceneView.scene.rootNode.addChildNode(self!.chooseTextNode!)
+            MBProgressHUD.hide(for: AppDelegate.shared.window!, animated: true)
+        }).disposed(by: disposeBag)
         //self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,ARSCNDebugOptions.showWorldOrigin]
         
         
         // Set the view's delegate
-        sceneView.delegate = self
+        sceneView.delegate = nil
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -47,6 +62,11 @@ class DetectionViewController: UIViewController {
         
         // Run the view's session
         sceneView.session.run(configuration)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,7 +110,7 @@ class DetectionViewController: UIViewController {
         if hitResults.count > 0 {
             let result = hitResults[0]
             let node = result.node
-            if node.name!.contains("patien") {
+            if node.name!.contains("patient") {
                 node.addShowMeAnimation()
             }
             print("Patient tapped")
@@ -148,6 +168,23 @@ class DetectionViewController: UIViewController {
         self.sceneView.delegate = nil
     }
     
+    func addbungalos(counter: Int){
+       
+        
+        let positions = BungaloHelper().getPositions(for: counter)
+        
+        for index in 0...2 {
+            let bungaloScene = SCNScene(named: "cama.scn")!
+            let node = bungaloScene.rootNode
+            node.scale = SCNVector3(0.5, 0.5, 0.5)
+            node.position = positions[index]
+            
+            self.sceneView.scene.rootNode.addChildNode(node)
+        }
+        
+        
+    }
+    
 }
 
 extension DetectionViewController: ARSCNViewDelegate {
@@ -176,6 +213,7 @@ extension DetectionViewController: ARSCNViewDelegate {
         
         plane?.update(anchor: anchor as! ARPlaneAnchor)
     }
+    
 }
 
 

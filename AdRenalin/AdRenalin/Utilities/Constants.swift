@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import SceneKit
+
+struct Constants {
+
+    struct Positions {
+        
+        static let DefaultText = SCNVector3(-0.3, 0.2, -1.0)
+        
+    }
+    
+    struct Scales {
+        
+        static let DefaultTextScale = SCNVector3(0.01,0.01,0.01)
+        
+    }
+    
+}

@@ -10,6 +10,15 @@
 		1021210D01D85E1760C1AE08 /* Pods_AdRenalin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */; };
 		5402F4BC21764A180001567D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4BB21764A180001567D /* GoogleService-Info.plist */; };
 		5402F4BF217661CF0001567D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4BE217661CF0001567D /* Constants.swift */; };
+		5402F4C1217663740001567D /* AdNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4C0217663740001567D /* AdNode.swift */; };
+		5402F4C4217667540001567D /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4C3217667540001567D /* DataProvider.swift */; };
+		5402F4D4217902EC0001567D /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4D3217902EC0001567D /* Patient.swift */; };
+		5402F4D6217905B20001567D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4D5217905B20001567D /* Room.swift */; };
+		5402F4D8217909550001567D /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4D7217909550001567D /* BaseResponse.swift */; };
+		5402F4DC217911980001567D /* cama.scn in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4DB217910F70001567D /* cama.scn */; };
+		5402F4E1217913470001567D /* BungaloHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5402F4E0217913470001567D /* BungaloHelper.swift */; };
+		5426212F217B35F700D5F1AC /* bungalo.scn in Resources */ = {isa = PBXBuildFile; fileRef = 5402F4DF217912EB0001567D /* bungalo.scn */; };
+		54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -19,12 +28,20 @@
 		54455D96217341D5002C08EA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D95217341D5002C08EA /* Enums.swift */; };
 		54455D982173422B002C08EA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D972173422B002C08EA /* art.scnassets */; };
 		54455D9D217345FC002C08EA /* dead_man.scn in Resources */ = {isa = PBXBuildFile; fileRef = 54455D9C21734496002C08EA /* dead_man.scn */; };
-		54455DAD21751349002C08EA /* cama.scn in Resources */ = {isa = PBXBuildFile; fileRef = 54455DA821750F98002C08EA /* cama.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5402F4BB21764A180001567D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5402F4BE217661CF0001567D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5402F4C0217663740001567D /* AdNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNode.swift; sourceTree = "<group>"; };
+		5402F4C3217667540001567D /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		5402F4D3217902EC0001567D /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		5402F4D5217905B20001567D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		5402F4D7217909550001567D /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		5402F4DB217910F70001567D /* cama.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cama.scn; sourceTree = "<group>"; };
+		5402F4DF217912EB0001567D /* bungalo.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = bungalo.scn; sourceTree = "<group>"; };
+		5402F4E0217913470001567D /* BungaloHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BungaloHelper.swift; sourceTree = "<group>"; };
+		54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddText.swift"; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,7 +53,6 @@
 		54455D95217341D5002C08EA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		54455D972173422B002C08EA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		54455D9C21734496002C08EA /* dead_man.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = dead_man.scn; sourceTree = "<group>"; };
-		54455DA821750F98002C08EA /* cama.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cama.scn; sourceTree = "<group>"; };
 		798323AE084174E8B6769081 /* Pods-AdRenalin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdRenalin.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin.release.xcconfig"; sourceTree = "<group>"; };
 		C244A038E0852CBA720D138F /* Pods_AdRenalin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdRenalin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3628F51EFB88A6B94641D /* Pods-AdRenalin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdRenalin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,8 +81,17 @@
 		5402F4BD217661BC0001567D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5402F4C22176673E0001567D /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5402F4C3217667540001567D /* DataProvider.swift */,
+			);
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 		54455D7021733F69002C08EA = {
@@ -90,6 +115,7 @@
 		54455D7B21733F69002C08EA /* AdRenalin */ = {
 			isa = PBXGroup;
 			children = (
+				5402F4C22176673E0001567D /* DataProvider */,
 				54455D9921734462002C08EA /* Models */,
 				54455D94217341C0002C08EA /* Utilities */,
 				54455D9121734170002C08EA /* Components */,
@@ -127,6 +153,7 @@
 				5402F4BD217661BC0001567D /* Extensions */,
 				54455D95217341D5002C08EA /* Enums.swift */,
 				5402F4BE217661CF0001567D /* Constants.swift */,
+				5402F4E0217913470001567D /* BungaloHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -135,7 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				54455D9C21734496002C08EA /* dead_man.scn */,
-				54455DA821750F98002C08EA /* cama.scn */,
+				5402F4DB217910F70001567D /* cama.scn */,
+				5402F4DF217912EB0001567D /* bungalo.scn */,
+				5402F4C0217663740001567D /* AdNode.swift */,
+				5402F4D3217902EC0001567D /* Patient.swift */,
+				5402F4D5217905B20001567D /* Room.swift */,
+				5402F4D7217909550001567D /* BaseResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,10 +242,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				54455D8721733F6A002C08EA /* LaunchScreen.storyboard in Resources */,
+				5402F4DC217911980001567D /* cama.scn in Resources */,
 				54455D9D217345FC002C08EA /* dead_man.scn in Resources */,
-				54455DAD21751349002C08EA /* cama.scn in Resources */,
 				54455D982173422B002C08EA /* art.scnassets in Resources */,
 				54455D8421733F6A002C08EA /* Assets.xcassets in Resources */,
+				5426212F217B35F700D5F1AC /* bungalo.scn in Resources */,
 				54455D8221733F69002C08EA /* Main.storyboard in Resources */,
 				5402F4BC21764A180001567D /* GoogleService-Info.plist in Resources */,
 			);
@@ -253,14 +286,32 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AdRenalin/Pods-AdRenalin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +328,14 @@
 			files = (
 				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,
+				5402F4C1217663740001567D /* AdNode.swift in Sources */,
+				54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */,
+				5402F4C4217667540001567D /* DataProvider.swift in Sources */,
 				54455D9321734190002C08EA /* OverlayPlane.swift in Sources */,
+				5402F4E1217913470001567D /* BungaloHelper.swift in Sources */,
+				5402F4D8217909550001567D /* BaseResponse.swift in Sources */,
+				5402F4D6217905B20001567D /* Room.swift in Sources */,
+				5402F4D4217902EC0001567D /* Patient.swift in Sources */,
 				54455D96217341D5002C08EA /* Enums.swift in Sources */,
 				54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */,
 			);
