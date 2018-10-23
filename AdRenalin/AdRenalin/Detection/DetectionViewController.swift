@@ -160,16 +160,16 @@ class DetectionViewController: UIViewController {
             camaNode.position = positions[i]
             camaNode.name = "cama\(i)"
             
-            camaNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
+            camaNode.scale = Constants.Scales.DefaultCama
             self.sceneView.scene.rootNode.addChildNode(camaNode)
             
             let deadManScene = SCNScene(named: "dead_man.scn")!
             
             let deadManNode = deadManScene.rootNode
-            deadManNode.position = SCNVector3(camaNode.position.x, camaNode.position.y, camaNode.position.z  + depth / 10.0)
+            deadManNode.position = SCNVector3(camaNode.position.x, camaNode.position.y + 0.15, camaNode.position.z  + 0.04)
             deadManNode.name = "dead_man\(i)"
             
-            deadManNode.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1)
+            deadManNode.scale = SCNVector3(x: 0.12, y: 0.12, z: 0.12)
             
             self.sceneView.scene.rootNode.addChildNode(deadManNode)
             
@@ -184,9 +184,8 @@ class DetectionViewController: UIViewController {
     }
     
     func addbungalos(counter: Int, hitResult :ARHitTestResult){
-       
         
-        let positions = BungaloHelper().getPositions(for: counter)
+        let roomHelper = RoomHelper()
         
         for index in 0..<counter {
             let camaScene = SCNScene(named: "cama.scn")!
@@ -200,6 +199,14 @@ class DetectionViewController: UIViewController {
             camaNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
             self.sceneView.scene.rootNode.addChildNode(camaNode)
             DataStore.shared.rooms[index].node = camaNode
+            
+            //Add room texts
+            let textPosition = roomHelper.getPostion(of: camaNode.position)
+            let textNode = self.addText(text: DataStore.shared.rooms[index].name, position: textPosition)
+            textNode.scale = Constants.Scales.RoomText
+            textNode.rotation = SCNVector4(-textNode.rotation.x, textNode.rotation.y, textNode.rotation.z, textNode.rotation.w)
+            self.sceneView.scene.rootNode.addChildNode(textNode)
+            DataStore.shared.rooms[index].textNode = textNode
         }
         
     }
@@ -207,6 +214,7 @@ class DetectionViewController: UIViewController {
     func removeAllBungalo(){
         DataStore.shared.rooms.forEach { (room) in
             room.node?.removeFromParentNode()
+            room.textNode?.removeFromParentNode()
         }
     }
     

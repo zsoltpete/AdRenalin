@@ -24,7 +24,7 @@ class PatientHelper {
             
             let camaNode = camaScene.rootNode
             let width: Float = camaNode.boundingBox.max.x - camaNode.boundingBox.min.x
-            let xOffset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width
+            let xOffset: Float = (numberOfCama - Float(numberOfCama - Float(i) )) * width * 2.0
             let position = SCNVector3(hitResult.worldTransform.columns.3.x + xOffset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
             positions.append(position)
         }

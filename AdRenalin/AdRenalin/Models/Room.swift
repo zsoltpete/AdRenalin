@@ -15,6 +15,7 @@ class Room: BaseResponse {
     
    //Locally
     var node: SCNNode?
+    var textNode: SCNNode?
     
     init(referenceId: String, name: String, patients: [Patient]){
         self.name = name

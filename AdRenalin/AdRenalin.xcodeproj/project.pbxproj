@@ -25,6 +25,7 @@
 		5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5426213A217B681A00D5F1AC /* PatientHelper.swift */; };
 		5426213E217F0BAD00D5F1AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54262140217F0BAD00D5F1AC /* Localizable.strings */; };
 		54262143217F0C7D00D5F1AC /* Strings+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */; };
+		54262147217F0F3000D5F1AC /* RoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262146217F0F3000D5F1AC /* RoomHelper.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		5426213F217F0BAD00D5F1AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54262141217F0BC000D5F1AC /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Localizable.swift"; sourceTree = "<group>"; };
+		54262146217F0F3000D5F1AC /* RoomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomHelper.swift; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				54262134217B457000D5F1AC /* DetectionViewController+FlowManager.swift */,
 				54262136217B461300D5F1AC /* DataStore.swift */,
 				5426213A217B681A00D5F1AC /* PatientHelper.swift */,
+				54262146217F0F3000D5F1AC /* RoomHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54262147217F0F3000D5F1AC /* RoomHelper.swift in Sources */,
 				54262135217B457000D5F1AC /* DetectionViewController+FlowManager.swift in Sources */,
 				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,

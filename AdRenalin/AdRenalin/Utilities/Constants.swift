@@ -20,6 +20,8 @@ struct Constants {
     struct Scales {
         
         static let DefaultTextScale = SCNVector3(0.01,0.01,0.01)
+        static let RoomText = SCNVector3(0.005,0.005,0.005)
+        static let DefaultCama = SCNVector3(x: 1.5, y: 1.5, z: 1.5)
         
     }
     

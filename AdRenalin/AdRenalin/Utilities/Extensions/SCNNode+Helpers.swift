@@ -32,3 +32,15 @@ extension SCNVector3 {
     }
     
 }
+
+extension SCNVector3 {
+    enum Axis { case x, y, z }
+    enum Direction { case clockwise, counterClockwise }
+    func orthogonalVector(around axis: Axis, direction: Direction) -> SCNVector3 {
+        switch axis {
+        case .x: return direction == .clockwise ? SCNVector3(self.x, -self.z, self.y) : SCNVector3(self.x, self.z, -self.y)
+        case .y: return direction == .clockwise ? SCNVector3(-self.z, self.y, self.x) : SCNVector3(self.z, self.y, -self.x)
+        case .z: return direction == .clockwise ? SCNVector3(self.y, -self.x, self.z) : SCNVector3(-self.y, self.x, self.z)
+        }
+    }
+}
