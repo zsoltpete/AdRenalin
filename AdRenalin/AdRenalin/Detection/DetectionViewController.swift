@@ -15,6 +15,9 @@ import MBProgressHUD
 
 class DetectionViewController: UIViewController {
     
+    @IBOutlet weak var queueButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     
     let disposeBag = DisposeBag()
@@ -30,14 +33,7 @@ class DetectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MBProgressHUD.showAdded(to: AppDelegate.shared.window!, animated: true)
-        DataProvider.shared.getRooms().subscribe(onNext: { [weak self]value in
-            DataStore.shared.rooms = value
-            let textPosition = Constants.Positions.DefaultText
-            self!.chooseTextNode = self!.addText(text: "HelpText.PlaceRooms".localized, position: textPosition)
-            self!.sceneView.scene.rootNode.addChildNode(self!.chooseTextNode!)
-            MBProgressHUD.hide(for: AppDelegate.shared.window!, animated: true)
-        }).disposed(by: disposeBag)
+        self.getRooms()
         //self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,ARSCNDebugOptions.showWorldOrigin]
         
         
@@ -92,6 +88,17 @@ class DetectionViewController: UIViewController {
         let touchLocation = recognizer.location(in: sceneView)
         
         self.tapActions(for: self.flowStatus, touchLocation: touchLocation, recognizer: recognizer)
+    }
+    
+    func getRooms(firstTime: Bool = true){
+        DataProvider.shared.getRooms().subscribe(onNext: { [weak self]value in
+            DataStore.shared.rooms = value
+            if firstTime {
+                let textPosition = Constants.Positions.DefaultText
+                self!.chooseTextNode = self!.addText(text: "HelpText.PlaceRooms".localized, position: textPosition)
+                self!.sceneView.scene.rootNode.addChildNode(self!.chooseTextNode!)
+            }
+        }).disposed(by: disposeBag)
     }
     
     func nodeIfPushed(location: CGPoint) {
@@ -265,9 +272,36 @@ class DetectionViewController: UIViewController {
         if patient.isShowing {
             patient.node!.addShowMeAnimation()
             self.addDescPatient(patient: patient)
+            self.leftButton.alpha = 1.0
+            self.rightButton.alpha = 1.0
+            self.rightButton.titleLabel?.text = "LeftButton.Delete.Title".localized
         } else {
             patient.node!.addNotShowMeAnimation()
+            self.selectedPatient = nil
             self.removeDescPatient()
+            self.leftButton.alpha = 0.0
+            self.rightButton.alpha = 0.0
+        }
+    }
+    
+    @IBAction func queueButtonPsuhed(_ sender: Any) {
+        self.performSegue(withIdentifier: Constants.Segues.ShowQueue, sender: nil)
+    }
+    
+    @IBAction func leftButtonPsuhed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func rightButtonPushed(_ sender: Any) {
+        if self.flowStatus == .seePatients {
+            guard let index = selectedRoomIndex else {
+                return
+            }
+            DataProvider.shared.removePatient(roomId: index, id: selectedPatient!.id)
+            self.selectedPatient?.node!.removeFromParentNode()
+            self.removeDescPatient()
+            self.selectedPatient = nil
+            self.getRooms(firstTime: false)
         }
     }
     

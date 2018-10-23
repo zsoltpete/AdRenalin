@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class DataStore {
     
@@ -15,5 +17,7 @@ class DataStore {
     var rooms: [Room] = []
     var selectedRoom: Room?
     var roomPatients: [Patient] = []
+    
+    var queuedPatients: BehaviorRelay<[Patient]> = BehaviorRelay(value: [])
     
 }

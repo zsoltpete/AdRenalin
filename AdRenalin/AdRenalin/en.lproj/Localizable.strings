@@ -10,3 +10,4 @@
 "HelpText.PlaceRooms" = "Place Room";
 "HelpText.ChooseRoom" = "Choose Room";
 "HelpText.SelectPatient" = "Select Patient";
+"LeftButton.Delete.Title" = "Delete";

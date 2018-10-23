@@ -28,4 +28,12 @@ struct Constants {
         
     }
     
+    struct Cells {
+        static let QueueCell = "QueueCell"
+    }
+    
+    struct Segues {
+        static let ShowQueue = "ShowQueue"
+    }
+    
 }

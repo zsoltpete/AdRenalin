@@ -26,10 +26,16 @@ class Room: BaseResponse {
     
     override init(snapshot: [String: AnyObject], for referenceId: String) {
         name = snapshot["id"] as! String
-        let patientShanpshot = snapshot["patients"] as! [AnyObject]
         self.patients = [Patient]()
+        guard let patientShanpshot = snapshot["patients"] as? [AnyObject] else {
+            super.init(referenceId: referenceId)
+            return
+        }
         for patient in patientShanpshot {
-            self.patients.append(Patient(snapshot: patient as! [String: AnyObject] , for: referenceId))
+            if let dict = patient as? [String: AnyObject]  {
+                self.patients.append(Patient(snapshot: dict , for: referenceId))
+            }
+            
         }
         super.init(referenceId: referenceId)
     }

@@ -26,6 +26,8 @@
 		5426213E217F0BAD00D5F1AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54262140217F0BAD00D5F1AC /* Localizable.strings */; };
 		54262143217F0C7D00D5F1AC /* Strings+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */; };
 		54262147217F0F3000D5F1AC /* RoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262146217F0F3000D5F1AC /* RoomHelper.swift */; };
+		5426214B217F7CBC00D5F1AC /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5426214A217F7CBC00D5F1AC /* QueueViewController.swift */; };
+		5426214D217F82EB00D5F1AC /* QueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5426214C217F82EB00D5F1AC /* QueueCell.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		54262141217F0BC000D5F1AC /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Localizable.swift"; sourceTree = "<group>"; };
 		54262146217F0F3000D5F1AC /* RoomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomHelper.swift; sourceTree = "<group>"; };
+		5426214A217F7CBC00D5F1AC /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
+		5426214C217F82EB00D5F1AC /* QueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCell.swift; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		54262149217F7C9700D5F1AC /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				5426214A217F7CBC00D5F1AC /* QueueViewController.swift */,
+				5426214C217F82EB00D5F1AC /* QueueCell.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
 		54455D7021733F69002C08EA = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 		54455D7B21733F69002C08EA /* AdRenalin */ = {
 			isa = PBXGroup;
 			children = (
+				54262149217F7C9700D5F1AC /* Queue */,
 				5402F4C22176673E0001567D /* DataProvider */,
 				54455D9921734462002C08EA /* Models */,
 				54455D94217341C0002C08EA /* Utilities */,
@@ -350,12 +364,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5426214B217F7CBC00D5F1AC /* QueueViewController.swift in Sources */,
 				54262147217F0F3000D5F1AC /* RoomHelper.swift in Sources */,
 				54262135217B457000D5F1AC /* DetectionViewController+FlowManager.swift in Sources */,
 				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,
 				54262143217F0C7D00D5F1AC /* Strings+Localizable.swift in Sources */,
 				5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */,
+				5426214D217F82EB00D5F1AC /* QueueCell.swift in Sources */,
 				5402F4C1217663740001567D /* AdNode.swift in Sources */,
 				54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */,
 				5402F4C4217667540001567D /* DataProvider.swift in Sources */,
