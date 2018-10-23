@@ -31,6 +31,18 @@ extension SCNVector3 {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
     }
     
+    func around(offset: Float = 0.05, vector: SCNVector3) -> Bool{
+        let aroudX = self.x < vector.x + offset && self.x > vector.x - offset
+        let aroudY = self.y < vector.y + offset && self.y > vector.y - offset
+        let aroudZ = self.z < vector.z + offset && self.z > vector.z - offset
+        
+        if aroudX && aroudY && aroudZ {
+            return true
+        }
+        return false
+        
+    }
+    
 }
 
 extension SCNVector3 {

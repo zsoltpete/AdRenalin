@@ -14,5 +14,6 @@ class DataStore {
     
     var rooms: [Room] = []
     var selectedRoom: Room?
+    var roomPatients: [Patient] = []
     
 }

@@ -31,4 +31,14 @@ class PatientHelper {
         return positions
     }
     
+    func getDescPositions(patient: Patient) -> (SCNVector3, SCNVector3, SCNVector3) {
+        let sleepPatientPosition = patient.node!.worldPosition
+        let namePosition = SCNVector3(sleepPatientPosition.x + 0.1, sleepPatientPosition.y + 0.5, sleepPatientPosition.z)
+        var diagnosisPosition = namePosition
+        diagnosisPosition.y -= 0.05
+        var descPosition = diagnosisPosition
+        descPosition.y -= 0.2
+        return (namePosition, diagnosisPosition, descPosition)
+    }
+    
 }

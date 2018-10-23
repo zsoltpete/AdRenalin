@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SceneKit
 
 class Patient: BaseResponse {
 
@@ -14,6 +15,11 @@ class Patient: BaseResponse {
     let diagnosis: String
     let id: Int
     var desc: String
+    
+    //Locally
+    var node: SCNNode?
+    var textNodes: [SCNNode] = []
+    var isShowing: Bool = false
     
     override init(snapshot: [String: AnyObject], for referenceId: String) {
         name = snapshot["name"] as! String

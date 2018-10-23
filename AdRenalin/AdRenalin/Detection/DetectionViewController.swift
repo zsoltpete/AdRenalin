@@ -25,6 +25,8 @@ class DetectionViewController: UIViewController {
     var chooseTextNode : SCNNode?
     var selectedRoom: Room?
     var selectedRoomIndex: Int?
+    var selectedPatient: Patient?
+    var selectedPatientIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +101,20 @@ class DetectionViewController: UIViewController {
             let result = hitResults[0]
             let node = result.node
             if node.name!.contains("patient") {
-                node.addShowMeAnimation()
+                var counter = 0
+                for counter in 0..<DataStore.shared.roomPatients.count {
+                    let patient = DataStore.shared.roomPatients[counter]
+                    if patient.node!.position.around(vector: node.worldPosition) {
+                        selectedPatient = patient
+                        selectedPatientIndex = counter
+                        break
+                    }
+                }
+                if selectedPatient != nil {
+                    selectedPatient?.isShowing = !selectedPatient!.isShowing
+                    self.animate(patient: selectedPatient!)
+                    
+                }
             }
             print("Patient tapped")
         }
@@ -147,10 +162,10 @@ class DetectionViewController: UIViewController {
     }
     
     func addPatient(hitResult: ARHitTestResult, selectedIndex: Int) {
+        let selectedRoom = DataStore.shared.rooms[selectedIndex]
+        let positions = PatientHelper().getPositions(for: selectedRoom.patients.count, hitResult: hitResult)
         
-        let positions = PatientHelper().getPositions(for: DataStore.shared.rooms[selectedIndex].patients.count, hitResult: hitResult)
-        
-        let numberOfCama: Float = Float(DataStore.shared.rooms[selectedIndex].patients.count)
+        let numberOfCama: Float = Float(selectedRoom.patients.count)
         
         for i  in 0..<Int(numberOfCama) {
             let camaScene = SCNScene(named: "cama.scn")!
@@ -172,6 +187,9 @@ class DetectionViewController: UIViewController {
             deadManNode.scale = SCNVector3(x: 0.12, y: 0.12, z: 0.12)
             
             self.sceneView.scene.rootNode.addChildNode(deadManNode)
+            let patient = selectedRoom.patients[i]
+            DataStore.shared.roomPatients.append(patient)
+            DataStore.shared.roomPatients[i].node = deadManNode
             
         }
     }
@@ -218,6 +236,41 @@ class DetectionViewController: UIViewController {
         }
     }
     
+    func addDescPatient(patient: Patient){
+        let textPosition = PatientHelper().getDescPositions(patient: patient)
+        let nameTextNode = self.addText(text: patient.name, position: textPosition.0)
+        nameTextNode.scale = Constants.Scales.PatientNameText
+        self.sceneView.scene.rootNode.addChildNode(nameTextNode)
+        DataStore.shared.roomPatients[selectedPatientIndex!].textNodes.append(nameTextNode)
+        
+        let diagnosesTextNode = self.addText(text: patient.diagnosis, position: textPosition.1)
+        diagnosesTextNode.scale = Constants.Scales.PatientDescText
+        self.sceneView.scene.rootNode.addChildNode(diagnosesTextNode)
+        DataStore.shared.roomPatients[selectedPatientIndex!].textNodes.append(diagnosesTextNode)
+        
+        let descTextNode = self.addText(text: patient.desc, position: textPosition.2)
+        descTextNode.scale = Constants.Scales.PatientDescText
+        self.sceneView.scene.rootNode.addChildNode(descTextNode)
+        DataStore.shared.roomPatients[selectedPatientIndex!].textNodes.append(descTextNode)
+    }
+    
+    func removeDescPatient(){
+        DataStore.shared.roomPatients[selectedPatientIndex!].textNodes.forEach { (node) in
+            node.removeFromParentNode()
+        }
+        DataStore.shared.roomPatients[selectedPatientIndex!].textNodes.removeAll()
+    }
+    
+    func animate(patient: Patient) {
+        if patient.isShowing {
+            patient.node!.addShowMeAnimation()
+            self.addDescPatient(patient: patient)
+        } else {
+            patient.node!.addNotShowMeAnimation()
+            self.removeDescPatient()
+        }
+    }
+    
 }
 
 
@@ -252,9 +305,17 @@ extension DetectionViewController: ARSCNViewDelegate {
 
 
 extension SCNNode {
+    func addNotShowMeAnimation() {
+        let rotateOne = SCNAction.rotateBy(x: CGFloat(Float.pi / -2.0), y: 0.0, z: 0, duration: 1.0)
+        let hoverUp = SCNAction.moveBy(x: 0, y: -0.2, z: 0, duration: 1.0)
+        let scaleUp  = SCNAction.scale(by: 1.0/2.0, duration: 1.0)
+        let rotateAndHover = SCNAction.group([rotateOne, hoverUp, scaleUp])
+        self.runAction(rotateAndHover)
+    }
+    
     func addShowMeAnimation() {
         let rotateOne = SCNAction.rotateBy(x: CGFloat(Float.pi / 2.0), y: 0.0, z: 0, duration: 1.0)
-        let hoverUp = SCNAction.moveBy(x: 0, y: 2.0, z: 0, duration: 1.0)
+        let hoverUp = SCNAction.moveBy(x: 0, y: 0.2, z: 0, duration: 1.0)
         let scaleUp  = SCNAction.scale(by: 2.0, duration: 1.0)
         let rotateAndHover = SCNAction.group([rotateOne, hoverUp, scaleUp])
         self.runAction(rotateAndHover)
