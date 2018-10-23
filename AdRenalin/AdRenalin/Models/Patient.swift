@@ -29,7 +29,7 @@ class Patient: BaseResponse {
         super.init(referenceId: referenceId)
     }
     
-    func toAnyObject() -> Any {
+    func toAnyObject() -> [AnyHashable : Any] {
         return [
             "name": name,
             "diagnosis": diagnosis,

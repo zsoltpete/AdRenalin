@@ -47,6 +47,12 @@
                                     <action selector="queueButtonPsuhed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w5e-3W-MtV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuz-lT-90V">
+                                <rect key="frame" x="112.5" y="28" width="150" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.01176470588" green="0.7725490196" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -55,13 +61,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="Ge1-dC-zDq" secondAttribute="leading" id="6KI-Aa-JCM"/>
                             <constraint firstItem="xux-HW-vwQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-8" id="F4a-cw-EOG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="G5v-JV-MpO" secondAttribute="bottom" id="K6b-QC-vZz"/>
+                            <constraint firstItem="Cuz-lT-90V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="LJ9-m5-LZN"/>
                             <constraint firstItem="12X-yi-6VB" firstAttribute="width" secondItem="Ge1-dC-zDq" secondAttribute="width" id="PXi-zg-r84"/>
                             <constraint firstItem="G5v-JV-MpO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="URs-Z4-LZo"/>
                             <constraint firstItem="G5v-JV-MpO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VCL-BN-oZP"/>
+                            <constraint firstItem="Cuz-lT-90V" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aRV-Kf-0Xh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="xux-HW-vwQ" secondAttribute="top" constant="-8" id="dqo-Yg-8dF"/>
                             <constraint firstItem="Ge1-dC-zDq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="l16-I6-2qH"/>
                             <constraint firstItem="Ge1-dC-zDq" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="tKF-P5-xcd"/>
                             <constraint firstItem="12X-yi-6VB" firstAttribute="bottom" secondItem="Ge1-dC-zDq" secondAttribute="bottom" id="vfG-CG-Y3v"/>
+                            <constraint firstItem="Cuz-lT-90V" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="zGp-pU-nv3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -70,6 +79,7 @@
                         <outlet property="queueButton" destination="xux-HW-vwQ" id="yf6-DL-36e"/>
                         <outlet property="rightButton" destination="12X-yi-6VB" id="huS-ew-AvU"/>
                         <outlet property="sceneView" destination="G5v-JV-MpO" id="Cti-w2-JLQ"/>
+                        <outlet property="selectedPatientLabel" destination="Cuz-lT-90V" id="QDp-h6-vxl"/>
                         <segue destination="kWy-2c-LnI" kind="presentation" identifier="ShowQueue" id="kHQ-5b-raF"/>
                     </connections>
                 </viewController>

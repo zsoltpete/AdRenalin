@@ -15,6 +15,7 @@ import MBProgressHUD
 
 class DetectionViewController: UIViewController {
     
+    @IBOutlet weak var selectedPatientLabel: UILabel!
     @IBOutlet weak var queueButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
@@ -49,6 +50,14 @@ class DetectionViewController: UIViewController {
         sceneView.scene = scene
         
         registerGestureRecognizers()
+        DataStore.shared.selectedQueuePatient.subscribe(onNext: { patient in
+            if patient == nil {
+                self.selectedPatientLabel.alpha = 0.0
+            } else {
+                self.selectedPatientLabel.alpha = 1.0
+                self.selectedPatientLabel.text = "SelectedQueuePatient.Prefix".localized + patient!.name
+            }
+        }).disposed(by: disposeBag)
         
     }
     
@@ -122,6 +131,22 @@ class DetectionViewController: UIViewController {
                     self.animate(patient: selectedPatient!)
                     
                 }
+            } else if node.name!.contains("cama"), DataStore.shared.selectedQueuePatient.value != nil {
+                
+                for counter in 0..<DataStore.shared.roomPatients.count {
+                    let patient = DataStore.shared.roomPatients[counter]
+                    if patient.node == nil {
+                        DataProvider.shared.removeQueue(id: DataStore.shared.selectedQueuePatient.value!.id, roomId: selectedRoomIndex!, patientIndex: counter)
+                        let deadManNode = self.addPatientNode(camaNode: node)
+                        self.sceneView.scene.rootNode.addChildNode(deadManNode)
+                        DataStore.shared.roomPatients[counter] = DataStore.shared.selectedQueuePatient.value!
+                        DataStore.shared.roomPatients[counter].node = deadManNode
+                        DataStore.shared.selectedQueuePatient.accept(nil)
+                        
+                        break
+                    }
+                    
+                }
             }
             print("Patient tapped")
         }
@@ -173,7 +198,6 @@ class DetectionViewController: UIViewController {
         let positions = PatientHelper().getPositions(for: selectedRoom.patients.count, hitResult: hitResult)
         
         let numberOfCama: Float = Float(selectedRoom.patients.count)
-        
         for i  in 0..<Int(numberOfCama) {
             let camaScene = SCNScene(named: "cama.scn")!
             
@@ -185,20 +209,31 @@ class DetectionViewController: UIViewController {
             camaNode.scale = Constants.Scales.DefaultCama
             self.sceneView.scene.rootNode.addChildNode(camaNode)
             
-            let deadManScene = SCNScene(named: "dead_man.scn")!
+            //Add Patient if able
             
-            let deadManNode = deadManScene.rootNode
-            deadManNode.position = SCNVector3(camaNode.position.x, camaNode.position.y + 0.15, camaNode.position.z  + 0.04)
-            deadManNode.name = "dead_man\(i)"
-            
-            deadManNode.scale = SCNVector3(x: 0.12, y: 0.12, z: 0.12)
-            
-            self.sceneView.scene.rootNode.addChildNode(deadManNode)
             let patient = selectedRoom.patients[i]
             DataStore.shared.roomPatients.append(patient)
-            DataStore.shared.roomPatients[i].node = deadManNode
+            if patient.id > 0 {
+                let deadManNode = self.addPatientNode(camaNode: camaNode)
+                self.sceneView.scene.rootNode.addChildNode(deadManNode)
+                
+                DataStore.shared.roomPatients[i].node = deadManNode
+            }
+            
             
         }
+    }
+    
+    func addPatientNode(camaNode: SCNNode) -> SCNNode{
+        let deadManScene = SCNScene(named: "dead_man.scn")!
+        
+        let deadManNode = deadManScene.rootNode
+        deadManNode.scale = SCNVector3(x: 0.12, y: 0.12, z: 0.12)
+        deadManNode.worldPosition = SCNVector3(camaNode.position.x, camaNode.position.y + 0.15, camaNode.position.z  + 0.04)
+        
+        
+        
+        return deadManNode
     }
     
     func removeAllPlanes(){

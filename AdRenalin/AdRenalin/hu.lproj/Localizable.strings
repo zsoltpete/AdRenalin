@@ -11,3 +11,4 @@
 "HelpText.ChooseRoom" = "Choose Room";
 "HelpText.SelectPatient" = "Select Patient";
 "LeftButton.Delete.Title" = "Törlés";
+"SelectedQueuePatient.Prefix" = "Kiválasztva: ";

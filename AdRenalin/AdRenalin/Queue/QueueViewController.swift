@@ -24,12 +24,20 @@ class QueueViewController: UIViewController {
             MBProgressHUD.hide(for: AppDelegate.shared.window!, animated: true)
         }).disposed(by: disposeBag)
         self.bindTableView()
+        self.tapTableView()
     }
     
     func bindTableView(){
         DataStore.shared.queuedPatients.bind(to: self.tableView.rx.items(cellIdentifier: Constants.Cells.QueueCell)){ (_,model, cell: QueueCell) in
             cell.titleLabel.text = model.name
         }.disposed(by: disposeBag)
+    }
+    
+    func tapTableView(){
+        self.tableView.rx.modelSelected(Patient.self).subscribe(onNext: { model in
+            DataStore.shared.selectedQueuePatient.accept(model)
+            self.dismiss(animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 
 }

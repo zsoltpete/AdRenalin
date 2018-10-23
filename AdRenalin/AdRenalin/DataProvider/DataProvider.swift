@@ -71,5 +71,35 @@ class  DataProvider {
         })
     }
     
+    func removeQueue(id: Int, roomId: Int, patientIndex: Int) {
+        var removedPatient: Patient?
+        queuePatientsRef.observe(.value, with: { (snapshot: DataSnapshot) in
+            var patients: Array<Patient> = []
+            let enumerator = snapshot.children
+            while let patient = enumerator.nextObject() as? DataSnapshot {
+                patients.append(Patient(snapshot: patient.value as! [String: AnyObject], for: patient.key))
+            }
+            for i in 0..<patients.count {
+                if patients[i].id == id {
+                    removedPatient = patients[i]
+                    self.ref.child("queue").child(patients[i].referenceId).removeValue()
+                    self.addPatient(roomId: roomId, removedPatient: removedPatient!, patientIndex: patientIndex)
+                }
+            }
+        })
+    }
+    
+    private func addPatient(roomId: Int, removedPatient: Patient, patientIndex: Int) {
+        
+        groupsRef.child("\(roomId)").child("patients").child("\(patientIndex)").updateChildValues(removedPatient.toAnyObject()) {
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
+    
 }
 

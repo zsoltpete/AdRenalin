@@ -19,5 +19,5 @@ class DataStore {
     var roomPatients: [Patient] = []
     
     var queuedPatients: BehaviorRelay<[Patient]> = BehaviorRelay(value: [])
-    
+    var selectedQueuePatient: BehaviorRelay<Patient?> = BehaviorRelay(value: nil)
 }
