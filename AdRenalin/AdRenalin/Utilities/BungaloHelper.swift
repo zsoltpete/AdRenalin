@@ -30,7 +30,7 @@ class BungaloHelper {
     }
     
     private func getFirstBungaloPosition() -> SCNVector3 {
-        let position = SCNVector3(0, -0.2, -0.4)
+        let position = SCNVector3(0, 0.0, 0.0)
         return position
     }
     

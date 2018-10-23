@@ -32,7 +32,7 @@ class DetectionViewController: UIViewController {
         DataProvider.shared.getRooms().subscribe(onNext: { [weak self]value in
             DataStore.shared.rooms = value
             let textPosition = Constants.Positions.DefaultText
-            self!.chooseTextNode = self!.addText(text: "Choose room", position: textPosition)
+            self!.chooseTextNode = self!.addText(text: "HelpText.PlaceRooms".localized, position: textPosition)
             self!.sceneView.scene.rootNode.addChildNode(self!.chooseTextNode!)
             MBProgressHUD.hide(for: AppDelegate.shared.window!, animated: true)
         }).disposed(by: disposeBag)
@@ -189,12 +189,17 @@ class DetectionViewController: UIViewController {
         let positions = BungaloHelper().getPositions(for: counter)
         
         for index in 0..<counter {
-            let bungaloScene = SCNScene(named: "cama.scn")!
-            let node = bungaloScene.rootNode
-            node.scale = SCNVector3(0.5, 0.5, 0.5)
-            node.position = positions[index]
+            let camaScene = SCNScene(named: "cama.scn")!
             
-            self.sceneView.scene.rootNode.addChildNode(node)
+            let camaNode = camaScene.rootNode
+            let width: Float = camaNode.boundingBox.max.x - camaNode.boundingBox.min.x
+            let depth: Float = camaNode.boundingBox.max.z - camaNode.boundingBox.min.z
+            let xOffset: Float = Float((counter - counter - index)) * width
+            camaNode.position = SCNVector3(hitResult.worldTransform.columns.3.x + xOffset,hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+            
+            camaNode.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
+            self.sceneView.scene.rootNode.addChildNode(camaNode)
+            DataStore.shared.rooms[index].node = camaNode
         }
         
     }

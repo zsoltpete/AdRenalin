@@ -23,6 +23,8 @@
 		54262137217B461300D5F1AC /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262136217B461300D5F1AC /* DataStore.swift */; };
 		54262139217B4A8600D5F1AC /* SCNNode+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */; };
 		5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5426213A217B681A00D5F1AC /* PatientHelper.swift */; };
+		5426213E217F0BAD00D5F1AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54262140217F0BAD00D5F1AC /* Localizable.strings */; };
+		54262143217F0C7D00D5F1AC /* Strings+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */; };
 		54455D7D21733F69002C08EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54455D7C21733F69002C08EA /* AppDelegate.swift */; };
 		54455D8221733F69002C08EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8021733F69002C08EA /* Main.storyboard */; };
 		54455D8421733F6A002C08EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54455D8321733F6A002C08EA /* Assets.xcassets */; };
@@ -50,6 +52,9 @@
 		54262136217B461300D5F1AC /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Helpers.swift"; sourceTree = "<group>"; };
 		5426213A217B681A00D5F1AC /* PatientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHelper.swift; sourceTree = "<group>"; };
+		5426213F217F0BAD00D5F1AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		54262141217F0BC000D5F1AC /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Localizable.swift"; sourceTree = "<group>"; };
 		54455D7921733F69002C08EA /* AdRenalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdRenalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54455D7C21733F69002C08EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54455D8121733F69002C08EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 			children = (
 				54262130217B3EA800D5F1AC /* UIViewController+AddText.swift */,
 				54262138217B4A8600D5F1AC /* SCNNode+Helpers.swift */,
+				54262142217F0C7D00D5F1AC /* Strings+Localizable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -136,6 +142,7 @@
 				54455D8821733F6A002C08EA /* Info.plist */,
 				5402F4BB21764A180001567D /* GoogleService-Info.plist */,
 				54455D972173422B002C08EA /* art.scnassets */,
+				54262140217F0BAD00D5F1AC /* Localizable.strings */,
 			);
 			path = AdRenalin;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hu,
 			);
 			mainGroup = 54455D7021733F69002C08EA;
 			productRefGroup = 54455D7A21733F69002C08EA /* Products */;
@@ -257,6 +265,7 @@
 				5402F4DC217911980001567D /* cama.scn in Resources */,
 				54455D9D217345FC002C08EA /* dead_man.scn in Resources */,
 				54455D982173422B002C08EA /* art.scnassets in Resources */,
+				5426213E217F0BAD00D5F1AC /* Localizable.strings in Resources */,
 				54455D8421733F6A002C08EA /* Assets.xcassets in Resources */,
 				5426212F217B35F700D5F1AC /* bungalo.scn in Resources */,
 				54455D8221733F69002C08EA /* Main.storyboard in Resources */,
@@ -341,6 +350,7 @@
 				54262135217B457000D5F1AC /* DetectionViewController+FlowManager.swift in Sources */,
 				5402F4BF217661CF0001567D /* Constants.swift in Sources */,
 				54455D902173400C002C08EA /* DetectionViewController.swift in Sources */,
+				54262143217F0C7D00D5F1AC /* Strings+Localizable.swift in Sources */,
 				5426213B217B681A00D5F1AC /* PatientHelper.swift in Sources */,
 				5402F4C1217663740001567D /* AdNode.swift in Sources */,
 				54262131217B3EA800D5F1AC /* UIViewController+AddText.swift in Sources */,
@@ -360,6 +370,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		54262140217F0BAD00D5F1AC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5426213F217F0BAD00D5F1AC /* en */,
+				54262141217F0BC000D5F1AC /* hu */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		54455D8021733F69002C08EA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -383,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -444,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

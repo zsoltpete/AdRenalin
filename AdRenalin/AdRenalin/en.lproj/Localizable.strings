@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  AdRenalin
+
+  Created by Zsolt Pete on 2018. 10. 23..
+  Copyright © 2018. Zsolt Pete. All rights reserved.
+*/
+
+
+"HelpText.PlaceRooms" = "Place Room";
+"HelpText.ChooseRoom" = "Choose Room";
+"HelpText.SelectPatient" = "Select Patient";
